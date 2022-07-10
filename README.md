@@ -1,1 +1,1 @@
-# TestProject-For-ReactWall
+# Test project for ReactWall
