@@ -5,6 +5,7 @@ import { styled } from "@mui/material/styles";
 import { Box } from "@mui/material";
 import newsApi from "./utils/newsApi";
 import NewsSection from "./components/NewsSection";
+import ImageSection from "./components/ImageSection";
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
@@ -39,6 +40,7 @@ function App() {
               path="/"
               element={<NewsSection newsContent={newsContent.articles} />}
             />
+            <Route path="/image" element={<ImageSection />} />
           </Routes>
         </Box>
       </AppBar>
