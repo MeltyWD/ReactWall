@@ -12,13 +12,10 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
 import ArticleIcon from "@mui/icons-material/Article";
 import ImageIcon from "@mui/icons-material/Image";
 import DarkModeButton from "./darkmode";
+import NavItem from "./nav-item";
 
 const drawerWidth = 240;
 
@@ -133,36 +130,22 @@ export default function MiniDrawer({ children }) {
         </DrawerHeader>
         <Divider />
         <List>
-          {["ニュース", "イメージ"].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: "block" }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
-                  }}
-                >
-                  {index % 2 === 0 ? <ArticleIcon /> : <ImageIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-          ))}
+          <NavItem
+            open={open}
+            text={"ニュース"}
+            icon={<ArticleIcon />}
+            route="/"
+          />
+          <NavItem
+            open={open}
+            text={"イメージ"}
+            icon={<ImageIcon />}
+            route="/image"
+          />
         </List>
         <Divider />
         <List>
-          {["Dark mode"].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: "block" }}>
-              <DarkModeButton open={open} />
-            </ListItem>
-          ))}
+          <DarkModeButton open={open} />
         </List>
       </Drawer>
       {children}
