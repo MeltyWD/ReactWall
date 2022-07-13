@@ -2,15 +2,21 @@
 
 ## How run project
 
-### `git clone https://github.com/MeltyWD/reactwall.git`
+```
+git clone https://github.com/MeltyWD/reactwall.git
+```
 
-### `npm i`
+```
+npm i
+```
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+```
+npm start
+```
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
