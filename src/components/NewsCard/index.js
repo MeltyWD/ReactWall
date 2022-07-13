@@ -5,15 +5,24 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import { Button, CardActionArea, CardActions } from "@mui/material";
+import Link from "@mui/material/Link";
 
 export default function NewsCard({ content }) {
   return (
-    <Grid item xs={10}>
-      <Card>
+    <Grid item xs={11}>
+      <Card
+        sx={{
+          maxWidth: 900,
+          margin: "auto",
+        }}
+      >
         <CardActionArea>
           <CardMedia
             component="img"
             height="auto"
+            sx={{
+              maxHeight: 400,
+            }}
             image={content.urlToImage}
             alt={`${content.title} image`}
           />
@@ -28,9 +37,9 @@ export default function NewsCard({ content }) {
         </CardActionArea>
         <CardActions>
           <Button size="small" color="primary">
-            <a href={content.url} target="_blank" rel="noreferrer">
+            <Link href={content.url} target="_blank" rel="noreferrer">
               Source
-            </a>
+            </Link>
           </Button>
         </CardActions>
       </Card>
