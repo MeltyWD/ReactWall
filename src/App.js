@@ -1,8 +1,10 @@
+import React, { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 import AppBar from "./components/AppBar";
 import { styled } from "@mui/material/styles";
-import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
 import newsApi from "./utils/newsApi";
+import NewsSection from "./components/NewsSection";
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
@@ -13,15 +15,31 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   ...theme.mixins.toolbar,
 }));
 
-newsApi.getTechNews().then((res) => console.log(res));
-
 function App() {
-  return (
+  const [newsContent, setNewsContent] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    newsApi.getTechNews().then((res) => {
+      console.log(res);
+      setNewsContent(res);
+      setIsLoading(false);
+    });
+  }, []);
+
+  return isLoading ? (
+    <p>Loading</p>
+  ) : (
     <>
       <AppBar>
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
           <DrawerHeader />
-          <Typography variant="h3">ニュース</Typography>
+          <Routes>
+            <Route
+              path="/"
+              element={<NewsSection newsContent={newsContent.articles} />}
+            />
+          </Routes>
         </Box>
       </AppBar>
     </>
